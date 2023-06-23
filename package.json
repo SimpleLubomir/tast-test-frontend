@@ -1,0 +1,46 @@
+{
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"start": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"prepare": "nuxt prepare",
+		"lint": "eslint",
+		"lint:fix": "eslint --fix"
+	},
+	"dependencies": {
+		"@mdi/font": "^7.1.96",
+		"core-js": "^3.29.0",
+		"pinia": "^2.1.4",
+		"@pinia/nuxt": "^0.4.11",
+		"sass": "^1.62.0",
+		"vuetify": "^3.1.8",
+		"nuxt": "^3.5.3",
+		"nuxt-icons": "^3.1.0",
+		"vite-plugin-vuetify": "^1.0.2",
+		"@nuxtjs/device": "^3.1.0",
+		"lodash": "^4.17.21"
+	},
+	"devDependencies": {
+		"@nuxtjs/eslint-config-typescript": "^12.0.0",
+		"@nuxtjs/eslint-module": "^4.0.2",
+		"@nuxtjs/google-fonts": "^3.0.0",
+		"@types/node": "^18.15.2",
+		"@types/lodash": "^4.14.195",
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"@vuetify/cli-plugin-utils": "^0.0.10",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.3.0",
+		"husky": "^8.0.3",
+		"prettier": "^2.4.1",
+		"typescript": "^4.9.5"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn lint:fix"
+		}
+	}
+}
