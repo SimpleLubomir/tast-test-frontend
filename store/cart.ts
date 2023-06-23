@@ -28,11 +28,11 @@ export const useCartStore = defineStore('cart-store', () => {
 	const carts = ref<Ref<CartLoading>[]>([]);
 	const loading = ref(false);
 
-	const fetch = useApi();
+	const api = useApi();
 	const getCarts = async () => {
 		loading.value = true;
 
-		const { data } = await fetch<Response<Cart[]>>('cart', {
+		const { data } = await api<Response<Cart[]>>('cart', {
 			method: 'GET',
 		});
 
@@ -46,7 +46,7 @@ export const useCartStore = defineStore('cart-store', () => {
 
 		const {
 			data: { quantity },
-		} = await fetch<Response<Cart>>(`cart/${cart.value.id}`, {
+		} = await api<Response<Cart>>(`cart/${cart.value.id}`, {
 			method: 'PATCH',
 			body: {
 				quantity: cart.value.quantity,
@@ -58,7 +58,7 @@ export const useCartStore = defineStore('cart-store', () => {
 	};
 
 	const createCart = async (productId: string, quantity = 1) => {
-		const { data } = await fetch<Response<Cart>>('cart', {
+		const { data } = await api<Response<Cart>>('cart', {
 			method: 'POST',
 			body: {
 				productId,
@@ -74,7 +74,7 @@ export const useCartStore = defineStore('cart-store', () => {
 	const deleteCart = async (cart: Ref<CartLoading>) => {
 		cart.value.loading = true;
 
-		await fetch<Response<Cart>>(`cart/${cart.value.id}`, {
+		await api<Response<Cart>>(`cart/${cart.value.id}`, {
 			method: 'DELETE',
 		});
 
@@ -88,7 +88,7 @@ export const useCartStore = defineStore('cart-store', () => {
 	const purchaseAll = async () => {
 		carts.value.forEach((v) => (v.value.loading = true));
 
-		await fetch<Response<Cart>>(`cart/purchase`, {
+		await api<Response<Cart>>(`cart/purchase`, {
 			method: 'POST',
 		});
 

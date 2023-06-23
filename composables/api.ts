@@ -4,7 +4,7 @@ export const useApi = () => {
 	} = useRuntimeConfig();
 
 	return $fetch.create({
-		baseURL: backend,
+		baseURL: backend || 'http://localhost:3000',
 		credentials: 'include',
 	});
 };

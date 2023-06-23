@@ -22,13 +22,13 @@ interface Product {
 export const useProductStore = defineStore('product-store', () => {
 	const products = ref<Product[]>([]);
 	const loading = ref(false);
-	const fetch = useApi();
+	const api = useApi();
 	const getProducts = async () => {
 		loading.value = true;
 
 		const {
 			data: { items },
-		} = await fetch<Response<Pagination<Product>>>('product', {
+		} = await api<Response<Pagination<Product>>>('product', {
 			method: 'GET',
 		});
 
